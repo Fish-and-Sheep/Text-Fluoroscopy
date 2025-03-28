@@ -46,7 +46,7 @@ with open(f'save/{kl_path}/HC3_en_test.pkl', 'rb') as f:
 with open(f'save/{kl_path}/HC3_en_valid.pkl', 'rb') as f:
     valid_kl = pickle.load(f)
     valid_kl = np.array(valid_kl)
-    idx = train_kl.argmax(axis=1)
+    idx = valid_kl.argmax(axis=1)
     if which_layer == 'max_kl':
         valid_embeddings = torch.tensor([row[(i+1)*embedding_dim:(i+2)*embedding_dim].tolist() for row ,i in zip(valid_embeddings,idx) ]).to(device)
     if which_layer == 'max_kl_and_last_layer':
